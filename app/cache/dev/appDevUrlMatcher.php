@@ -106,12 +106,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // indexpage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'indexpage');
-            }
-
-            return array (  '_controller' => 'AppBundle\\Controller\\IndexController::indexAction',  '_route' => 'indexpage',);
+        if ($pathinfo === '/login') {
+            return array (  '_controller' => 'AppBundle\\Controller\\LoginController::indexAction',  '_route' => 'indexpage',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
