@@ -16,6 +16,19 @@ class LoginController extends Controller
 
     function submitAction(Request $request){
 
-    	die("hello");
+    	$username = $request->request->get('username');
+    	$password = $request->request->get('password');
+
+    	$em = $this->getDoctrine()->getManager();
+
+    	$user = $em->getRepository('AppBundle:User')->findBy(array('username'=>$username, 'password'=>md5($password)));
+
+    	if($user){
+
+    		return $this->redirectToRoute('home');
+    	}
+
+    	return $this->render('login/login.html.twig', array("message"=>"<p style='color: red'>Incorrect username/password combination!</p>",
+    														"active"=>"login"));
     }
 }
