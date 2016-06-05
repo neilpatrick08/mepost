@@ -1,3 +1,23 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+user_register:
+    path:     /register/
+    defaults: { _controller: AppBundle:Register:index }
+    methods:  [POST]
+
+user_login:
+    path:     /login
+    defaults: { _controller: AppBundle:Login:index }
+    methods: [GET]
+
+user_login_post:
+    path:     /login
+    defaults: { _controller: AppBundle:Login:submit }
+    methods: [POST]
+
+home:
+    path:     /home
+    defaults: { _controller: AppBundle:Home:index }
+    methods: [GET]
