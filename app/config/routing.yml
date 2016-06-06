@@ -9,15 +9,22 @@ user_register:
 
 user_login:
     path:     /login
-    defaults: { _controller: AppBundle:Login:index }
-    methods: [GET]
-
-user_login_post:
-    path:     /login
-    defaults: { _controller: AppBundle:Login:submit }
-    methods: [POST]
+    defaults: { _controller: AppBundle:Security:login }
 
 home:
     path:     /home
-    defaults: { _controller: AppBundle:Home:index }
+    defaults: { _controller: AppBundle:Posts:allPosts }
     methods: [GET]
+
+post:
+    path:     /
+    defaults: { _controller: AppBundle:Posts:post }
+    methods: [POST]
+
+index:
+    path:     /
+    defaults: { _controller: AppBundle:Posts:allPosts }
+    methods: [GET]
+
+logout:
+    path: /logout

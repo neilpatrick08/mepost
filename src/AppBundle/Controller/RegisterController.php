@@ -14,7 +14,12 @@ class RegisterController extends Controller
     	$user = new User();
 
     	$user->setUsername($request->request->get('username'));
-    	$user->setPassword(md5($request->request->get('password')));
+
+
+ $password = $this->get('security.password_encoder')->encodePassword($user, $request->request->get('password'));
+        
+        $user->setPassword($password);
+
     	$user->setEmailadd($request->request->get('email'));
 
     	$em = $this->getDoctrine()->getManager();
@@ -27,7 +32,7 @@ class RegisterController extends Controller
 
     	if($checkUserName || $checkEmailadd){
 
-    		return $this->render('login/login.html.twig', array("message"=>"<p style='color: red'>Username/Email already exists!</p>",
+    		return $this->render('security/login.html.twig', array("message"=>"<p style='color: red'>Username/Email already exists!</p>",
     															"active"=>"register"));
     	}
 
@@ -35,7 +40,7 @@ class RegisterController extends Controller
 
 	    $em->flush();
 
-    	return $this->render('login/login.html.twig', array("message"=>"<p style='color: green'>Registration Successful!</p>",
+    	return $this->render('security/login.html.twig', array("message"=>"<p style='color: green'>Registration Successful!</p>",
     														"active"=>"login"));
     }
 }

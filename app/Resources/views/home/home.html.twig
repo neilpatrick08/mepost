@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-4">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#">About</a></li>	
             <li><a href="#">Contact</a></li>
             <li>
               <a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">Profile <i class=""></i> </a>
@@ -33,11 +33,11 @@
           <ul class="collapse nav navbar-nav nav-collapse" role="search" id="nav-collapse4">
             <li><a href="#">Support</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="includes/img/me.jpeg" alt="maridlcrmn" width="20" /> Maridlcrmn <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="includes/img/me.jpeg" alt="maridlcrmn" width="20" /> {{app.user.username}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">My profile</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="{{url('logout')}}">Logout</a></li>
               </ul>
             </li>
           </ul>
@@ -46,10 +46,10 @@
     </nav><!-- /.navbar -->
 
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-4">
             <div class="testimonials">
             	<div class="active item">
-                  <blockquote><p>"I drink and i know things."</p></blockquote>
+                  <div class="quote"><p>"I drink and i know things."</p></div>
                   <div class="carousel-info">
                     <img alt="" src="includes/img/me.jpeg" class="pull-left">
                     <div class="pull-left">
@@ -60,29 +60,42 @@
                 </div>
             </div>
         </div>
+        <div class="widget-area no-padding blank">
+        	<h4>Anything on your mind? MePost now!</h4>
+			<div class="status-upload">
+				<form method="POST">
+					<textarea name="text_post" placeholder="What are you doing right now?" ></textarea>
+					<ul>
+						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+					</ul>
+					<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+				</form>
+			</div><!-- Status Upload  -->
+		</div><!-- Widget Area -->
     </div>
 
     <hr style="width:100%;display:block;margin-bottom:10px">
-    <div class="row col-md-6 col-md-offset-3">
-		<h4>Anything on your mind? MePost now!</h4>
-	</div>
-    <div class="row col-md-6 col-md-offset-3">
-    
-			<div class="widget-area no-padding blank">
-				<div class="status-upload">
-					<form>
-						<textarea placeholder="What are you doing right now?" ></textarea>
-						<ul>
-							<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
-							<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
-							<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
-							<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
-						</ul>
-						<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
-					</form>
-				</div><!-- Status Upload  -->
-			</div><!-- Widget Area -->
+	{% for post in posts %}
+		<div class="row col-md-6 col-md-offset-3">
+			<div class="testimonials">
+            	<div class="active item">
+                  <div class="carousel-info">
+                    <img alt="" src="includes/img/me.jpeg" class="pull-left">
+                    <div class="pull-left">
+                      <span class="testimonials-name">Lina Mars</span>
+                      <span class="testimonials-post">Commercial Director</span>
+                    </div>
+                    <div class="quote pull-left	"><p>{{post.textPost}}
+                      								{{post.postDate}}</p></div>
+                  </div>
+                </div>
+            </div>
 		</div>
+		<hr style="width:100%;display:block;margin-bottom:10px">
+	{% endfor %}
 </div><!-- /.container-fluid -->
 {% endblock %}
 {% block javascripts %}
