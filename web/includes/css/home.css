@@ -195,6 +195,9 @@ Licensed under MIT
     font-weight: 300;
     margin: 23px 0 7px;
 }
+.testimonials span.testimonials-name a{
+	color: #e6400c;
+}
 .testimonials span.testimonials-post {
     color: #656565;
     font-size: 12px;

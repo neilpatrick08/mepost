@@ -13,7 +13,7 @@
                   <div class="carousel-info">
                     <img alt="" src="{{ asset('includes/img/ninja.png') }}" class="pull-left">
                     <div class="pull-left">
-                      <span class="testimonials-name">{{app.user.username}}</span>
+                      <span class="testimonials-name"><a href="{{ url('home',{'username':app.user.username}) }}">{{app.user.username}}</a></span>
                       <span class="testimonials-post">Commercial Director</span>
                     </div>
                   </div>
@@ -45,7 +45,7 @@
                   <div class="carousel-info">
                     <img alt=""src="{{ asset('includes/img/ninja.png') }}" class="pull-left">
                     <div class="pull-left">
-                      <span class="testimonials-name">{{post.user.username}}</span>
+                      <span class="testimonials-name"><a href="{{ url('home',{'username':post.user.username}) }}">{{post.user.username}}</a></span>
                       <span class="testimonials-post">{{post.user.emailadd}}</span>
                     </div>
                     <div class="quote pull-left	">
