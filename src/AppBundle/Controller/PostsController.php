@@ -15,7 +15,7 @@ class PostsController extends Controller
 
     	$posts = $this->getDoctrine()
         			->getRepository('AppBundle:Post')
-        			->findBy(array("userId"=>$this->getUser()->getId()));
+        			->findAll();
 
 
     	return $this->render('home/home.html.twig', array("posts"=>$posts));

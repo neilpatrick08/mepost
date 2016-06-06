@@ -160,7 +160,7 @@ Licensed under MIT
     margin-left: 20px;	
 }
 .testimonials .quote {
-    background: #f8f8f8 none repeat scroll 0 0;
+    background: #E5FAEE  none repeat scroll 0 0;
     border: medium none;
     color: #666;
     display: block;
@@ -169,6 +169,7 @@ Licensed under MIT
     padding: 15px;
     position: relative;
     width: 100%;
+    border-radius: 15px;
 }
 .testimonials .quote::before {
     width: 0; 
@@ -221,4 +222,10 @@ Licensed under MIT
 .testimonials span.testimonials-post {
     color: #656565;
     font-size: 12px;
+}
+
+.testimonials .postdatetime{
+	text-align: right;
+	font-size: 9px;
+	margin-bottom: 2px;
 }

@@ -27,12 +27,7 @@ class Post
     /**
      * @var \DateTime
      */
-    private $postTime;
-
-    /**
-     * @var \DateTime
-     */
-    private $postDate;
+    private $postDateTime;
 
     /**
      * @var int
@@ -42,8 +37,7 @@ class Post
 
     public function __construct()
     {
-        $this->postDate = new \DateTime();
-        $this->postTime = new \DateTime();
+        $this->postDateTime = new \DateTime();
         $this->claps = 0;
     }
     /**
@@ -103,49 +97,26 @@ class Post
     }
 
     /**
-     * Set postTime
+     * Set postDateTime
      *
-     * @param \DateTime $postTime
+     * @param \DateTime $postDateTime
      * @return Post
      */
-    public function setPostTime($postTime)
+    public function setpostDateTime($postDateTime)
     {
-        $this->postTime = $postTime;
+        $this->postDateTime = $postDateTime;
 
         return $this;
     }
 
     /**
-     * Get postTime
+     * Get postDateTime
      *
      * @return \DateTime 
      */
-    public function getPostTime()
+    public function getpostDateTime()
     {
-        return $this->postTime;
-    }
-
-    /**
-     * Set postDate
-     *
-     * @param \DateTime $postDate
-     * @return Post
-     */
-    public function setPostDate($postDate)
-    {
-        $this->postDate = $postDate;
-
-        return $this;
-    }
-
-    /**
-     * Get postDate
-     *
-     * @return \DateTime 
-     */
-    public function getPostDate()
-    {
-        return $this->postDate;
+        return $this->postDateTime;
     }
 
     /**

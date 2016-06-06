@@ -17,7 +17,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Me Posts</a>
+          <a class="navbar-brand" href="#">Me Posts!</a>
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -33,7 +33,7 @@
           <ul class="collapse nav navbar-nav nav-collapse" role="search" id="nav-collapse4">
             <li><a href="#">Support</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="includes/img/me.jpeg" alt="maridlcrmn" width="20" /> {{app.user.username}} <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="includes/img/ninja.png" alt="maridlcrmn" width="20" /> {{app.user.username}} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">My profile</a></li>
                 <li class="divider"></li>
@@ -51,9 +51,9 @@
             	<div class="active item">
                   <div class="quote"><p>"I drink and i know things."</p></div>
                   <div class="carousel-info">
-                    <img alt="" src="includes/img/me.jpeg" class="pull-left">
+                    <img alt="" src="includes/img/ninja.png" class="pull-left">
                     <div class="pull-left">
-                      <span class="testimonials-name">Lina Mars</span>
+                      <span class="testimonials-name">{{app.user.username}}</span>
                       <span class="testimonials-post">Commercial Director</span>
                     </div>
                   </div>
@@ -83,13 +83,13 @@
 			<div class="testimonials">
             	<div class="active item">
                   <div class="carousel-info">
-                    <img alt="" src="includes/img/me.jpeg" class="pull-left">
+                    <img alt="" src="includes/img/ninja.png" class="pull-left">
                     <div class="pull-left">
-                      <span class="testimonials-name">Lina Mars</span>
-                      <span class="testimonials-post">Commercial Director</span>
+                      <span class="testimonials-name">{{post.user.username}}</span>
+                      <span class="testimonials-post">{{post.user.emailadd}}</span>
                     </div>
-                    <div class="quote pull-left	"><p>{{post.textPost}}
-                      								{{post.postDate}}</p></div>
+                    <div class="quote pull-left	"><p style="text-align:center">"{{post.textPost}}"</p>
+                      							  <p class="postdatetime">{{post.postDateTime|date('Y-m-d H:i') }}</p></div>
                   </div>
                 </div>
             </div>
