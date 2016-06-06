@@ -5,53 +5,13 @@
 	<link rel="stylesheet" href="{{ asset('includes/css/home.css') }}" />
 {% endblock %}
 {% block body %}
-    <div class="container-fluid">
-    <!-- Second navbar for profile settings -->
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Me Posts!</a>
-        </div>
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-4">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>	
-            <li><a href="#">Contact</a></li>
-            <li>
-              <a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse4" aria-expanded="false" aria-controls="nav-collapse4">Profile <i class=""></i> </a>
-            </li>
-          </ul>
-          <ul class="collapse nav navbar-nav nav-collapse" role="search" id="nav-collapse4">
-            <li><a href="#">Support</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="includes/img/ninja.png" alt="maridlcrmn" width="20" /> {{app.user.username}} <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">My profile</a></li>
-                <li class="divider"></li>
-                <li><a href="{{url('logout')}}">Logout</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
-
     <div class="row">
         <div class="col-md-4">
             <div class="testimonials">
             	<div class="active item">
-                  <div class="quote"><p>"I drink and i know things."</p></div>
+                  <div class="quote"><p>"{% if lastpost != '' %}{{lastpost.textPost}}{% else %} Post something on your mind :) {% endif %}"</p></div>
                   <div class="carousel-info">
-                    <img alt="" src="includes/img/ninja.png" class="pull-left">
+                    <img alt="" src="{{ asset('includes/img/ninja.png') }}" class="pull-left">
                     <div class="pull-left">
                       <span class="testimonials-name">{{app.user.username}}</span>
                       <span class="testimonials-post">Commercial Director</span>
@@ -63,8 +23,8 @@
         <div class="widget-area no-padding blank">
         	<h4>Anything on your mind? MePost now!</h4>
 			<div class="status-upload">
-				<form method="POST">
-					<textarea name="text_post" placeholder="What are you doing right now?" ></textarea>
+				<form method="POST" action="{{url('post')}}">
+					<textarea name="text_post" placeholder="What are you thinking right now?" ></textarea>
 					<ul>
 						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
 						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
@@ -83,20 +43,24 @@
 			<div class="testimonials">
             	<div class="active item">
                   <div class="carousel-info">
-                    <img alt="" src="includes/img/ninja.png" class="pull-left">
+                    <img alt=""src="{{ asset('includes/img/ninja.png') }}" class="pull-left">
                     <div class="pull-left">
                       <span class="testimonials-name">{{post.user.username}}</span>
                       <span class="testimonials-post">{{post.user.emailadd}}</span>
                     </div>
-                    <div class="quote pull-left	"><p style="text-align:center">"{{post.textPost}}"</p>
-                      							  <p class="postdatetime">{{post.postDateTime|date('Y-m-d H:i') }}</p></div>
+                    <div class="quote pull-left	">
+                      <p style="text-align:center">"{{post.textPost}}"</p>
+                      <p class="postdatetime">{{post.postDateTime|date('Y-m-d H:i') }}</p>
+                      {% if post.user.id == app.user.id %}
+                        <span class="remove"><a href="{{url('deletePost',{'postId': post.id})}}">delete</a></span>
+                      {% endif %}
+                    </div>
                   </div>
                 </div>
             </div>
+    <hr style="width:100%;display:block;margin-bottom:10px">
 		</div>
-		<hr style="width:100%;display:block;margin-bottom:10px">
 	{% endfor %}
-</div><!-- /.container-fluid -->
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}

@@ -11,8 +11,22 @@ user_login:
     path:     /login
     defaults: { _controller: AppBundle:Security:login }
 
+about:
+    path:     /about
+    defaults: { _controller: AppBundle:Home:about }
+    methods: [GET]
+
+contact:
+    path:     /contact
+    defaults: { _controller: AppBundle:Home:contact }
+    methods: [GET]
+
+deletePost:
+    path:     /del/{postId}
+    defaults: { _controller: AppBundle:Posts:deletePost }
+
 home:
-    path:     /home
+    path:     /{username}
     defaults: { _controller: AppBundle:Posts:allPosts }
     methods: [GET]
 
